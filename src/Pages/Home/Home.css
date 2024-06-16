@@ -1,0 +1,32 @@
+.home {
+    width: 99vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.welcome{
+    color: #58a399;
+    font-size : 55px;
+}
+
+.welcome-btn{
+    padding: 10px 20px;
+    font-size: 3.5rem;
+    font-weight: bolder;
+    background-color: #3abef9; 
+    color: white;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+.welcome-btn:hover {
+    background-color: #ffbb00; 
+    color: black;
+  }
+

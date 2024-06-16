@@ -1,0 +1,42 @@
+* {
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+    padding: 10px;
+}
+    
+.nav-link {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease, transform 0.3s ease;
+    
+}
+
+.nav-link:hover {
+    color: yellow;
+    transform: translateY(-3px);
+}  
+
+input {
+    padding: 10px;
+    border-radius: 20px;
+    width: 18%;
+}
+
+button {
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: aquamarine;
+    border: none;
+    cursor: pointer;
+}
+
+select {
+    padding: 10px;
+    border-radius: 20px;
+}

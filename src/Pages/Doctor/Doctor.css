@@ -1,0 +1,26 @@
+.doctor {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5%;
+  width: 95vw;
+  height: 100vh;
+  margin: 1.5%;
+}
+.doctor-newdoctor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.doctor-updatedoctor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.doctor-search {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

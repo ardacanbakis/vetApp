@@ -1,0 +1,56 @@
+.appointment {
+    width: 100%;
+    max-width: 1400px;
+    margin: 5%;
+    flex-direction: row;
+    text-align: center;
+}
+
+.appointment-newappointment {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5%;
+    width: 75vw;
+    margin-bottom: 2.5%;
+}
+
+.appointment-updateappointment {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5%;
+    width: 75vw;
+    margin-bottom: 2.5%;
+}
+
+.appointment-search-doctor-and-date {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5%;
+    width: 75vw;
+    margin-bottom: 2.5%;
+}
+
+.appointment-search-animal-and-date {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5%;
+    width: 75vw;
+    margin-bottom: 2.5%;
+}
+
+.reset-btn {
+    background-color: black;
+    color: yellow;
+}
+
+h2 {
+    color: #b771ff;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
