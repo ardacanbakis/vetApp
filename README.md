@@ -2,6 +2,8 @@
 
 VetApp is a comprehensive web application designed to manage veterinary appointments, customer data, animal data, and more. The project features a React frontend and a Spring Boot backend, providing a complete solution for veterinary clinic management.
 
+A live version can be accessed via clicking: [HERE](https://vetapp-ardacanbakis.vercel.app)
+
 ## Project Structure
 
 ### Frontend
