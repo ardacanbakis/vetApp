@@ -3,6 +3,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import UpdateIcon from "@mui/icons-material/Edit";
 import Alert from "@mui/material/Alert";
 
+
 import {
   getReports,
   deleteReport,
@@ -24,14 +25,14 @@ function Report() {
     title: "",
     diagnosis: "",
     price: "",
-    appointment: "",
+    appointmentId: "",
   });
 
   const [updateReport, setUpdateReport] = useState({
     title: "",
     diagnosis: "",
     price: "",
-    appointment: "",
+    appointmentId: "",
   });
 
   useEffect(() => {
@@ -45,20 +46,20 @@ function Report() {
     setReload(false);
   }, [reload]);
 
-  const handleNewReport = (event) => {
-    if (event.target.name === "appointment") {
-      setNewReport({
-        ...newReport,
-        appointment: {
-          id: event.target.value,
-        },
-      });
-    } else {
-      setNewReport({
-        ...newReport,
-        [event.target.name]: event.target.value,
-      });
-    }
+  const handleNewReportInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewReport((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleNewAppointmentSelectChange = (e) => {
+    const value = e.target.value;
+    setNewReport((prev) => ({
+      ...prev,
+      appointmentId: value,
+    }));
   };
 
   const handleNewReportBtn = () => {
@@ -69,9 +70,7 @@ function Report() {
           title: "",
           diagnosis: "",
           price: "",
-          appointment: {
-            id: "",
-          },
+          appointmentId: "",
         });
       })
       .catch((error) => {
@@ -88,20 +87,20 @@ function Report() {
     });
   };
 
-  const handleUpdateReportInputs = (event) => {
-    if (event.target.name === "appointment") {
-      setUpdateReport({
-        ...updateReport,
-        appointment: {
-          id: event.target.value,
-        },
-      });
-    } else {
-      setUpdateReport({
-        ...updateReport,
-        [event.target.name]: event.target.value,
-      });
-    }
+  const handleUpdateReportInputs = (e) => {
+    const { name, value } = e.target;
+    setUpdateReport((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleUpdateAppointmentSelectChange = (e) => {
+    const value = e.target.value;
+    setUpdateReport((prev) => ({
+      ...prev,
+      appointmentId: value,
+    }));
   };
 
   const handleUpdateReportBtn = () => {
@@ -112,9 +111,7 @@ function Report() {
           title: "",
           diagnosis: "",
           price: "",
-          appointment: {
-            id: "",
-          },
+          appointmentId: "",
         });
       })
       .catch((error) => {
@@ -130,7 +127,7 @@ function Report() {
       title: report.title,
       diagnosis: report.diagnosis,
       price: report.price,
-      appointment: report.appointment,
+      appointmentId: report.appointment.id,
       id: report.id,
     });
   };
@@ -150,59 +147,53 @@ function Report() {
 
   return (
     <div className="report">
-        <h3>New Report</h3>
+      <h3>New Report</h3>
       <div className="report-newreport">
-
         <input
           type="text"
           placeholder="Title"
           name="title"
           value={newReport.title}
-          onChange={handleNewReport}
+          onChange={handleNewReportInputChange}
         />
         <input
           type="text"
           placeholder="Diagnosis"
           name="diagnosis"
           value={newReport.diagnosis}
-          onChange={handleNewReport}
+          onChange={handleNewReportInputChange}
         />
         <input
           type="number"
           placeholder="Price"
           name="price"
           value={newReport.price}
-          onChange={handleNewReport}
+          onChange={handleNewReportInputChange}
         />
-
         <select
-          value={newReport.appointment.id}
-          name="appointment"
-          onChange={handleNewReport}
+          value={newReport.appointmentId}
+          name="appointmentId"
+          onChange={handleNewAppointmentSelectChange}
         >
-          <option value="" disabled={true} selected={true}>
+          <option value="" disabled>
             Select Appointment
           </option>
-          {appointments.map((appointment) => {
-            return (
-              <option value={appointment.id}>
-                {appointment.appointmentDate}
-              </option>
-            );
-          })}
+          {appointments.map((appointment) => (
+            <option key={appointment.id} value={appointment.id}>
+              {appointment.appointmentDate}
+            </option>
+          ))}
         </select>
-
         <button onClick={handleNewReportBtn}>Add</button>
-        {alert === 1 ? (
+        {alert === 1 && (
           <Alert severity="error">
             Please review your information and try again!
           </Alert>
-        ) : null}
+        )}
       </div>
 
-        <h3>Update Report</h3>
+      <h3>Update Report</h3>
       <div className="report-updatereport">
-
         <input
           type="text"
           placeholder="Title"
@@ -210,7 +201,6 @@ function Report() {
           value={updateReport.title}
           onChange={handleUpdateReportInputs}
         />
-
         <input
           type="text"
           placeholder="Diagnosis"
@@ -218,7 +208,6 @@ function Report() {
           value={updateReport.diagnosis}
           onChange={handleUpdateReportInputs}
         />
-
         <input
           type="number"
           placeholder="Price"
@@ -226,36 +215,32 @@ function Report() {
           value={updateReport.price}
           onChange={handleUpdateReportInputs}
         />
-
-        <select name="appointment" onChange={handleUpdateReportInputs}>
-          <option value="" disabled={true} selected={true}>
+        <select
+          name="appointmentId"
+          value={updateReport.appointmentId}
+          onChange={handleUpdateAppointmentSelectChange}
+        >
+          <option value="" disabled>
             Select Appointment
           </option>
-          {appointments.map((appointment) => {
-            return (
-              <option value={appointment.id}>
-                {appointment.appointmentDate}
-              </option>
-            );
-          })}
+          {appointments.map((appointment) => (
+            <option key={appointment.id} value={appointment.id}>
+              {appointment.appointmentDate}
+            </option>
+          ))}
         </select>
-
         <button onClick={handleUpdateReportBtn}>Update</button>
-        {alert === 2 ? (
-          <Alert severity="error">Please select a report</Alert>
-        ) : null}
+        {alert === 2 && <Alert severity="error">Please select a report</Alert>}
       </div>
 
       <div className="report-searchreport">
         <h3>Search Report</h3>
-
         <input
           type="text"
           placeholder="Enter Report Name"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-
         <button onClick={handleSearch}>Search</button>
         <button className="reset-btn" onClick={handleReset}>
           Reset
@@ -264,7 +249,6 @@ function Report() {
 
       <div className="list">
         <h2>Report List</h2>
-
         <div className="table-container">
           <table className="table">
             <thead>
@@ -290,19 +274,20 @@ function Report() {
                   <td>{report.appointment.customerName}</td>
                   <td>
                     {report.vaccineList?.map((vaccineLists) => (
-                      <span>{vaccineLists.name} , </span>
+                      <span key={vaccineLists.id}>{vaccineLists.name}, </span>
                     ))}
                   </td>
                   <td>{report.price}</td>
-                  <td>{report.appointment.date}</td>
-
-                  <td>
-                    <span onClick={() => handleUpdateIcon(report)}>
-                      <UpdateIcon />
-                    </span>
-                    <span onClick={() => handleDelete(report.id)}>
-                      <DeleteIcon />
-                    </span>{" "}
+                  <td>{report.appointment.appointmentDate}</td>
+                  <td className="actions">
+                    <DeleteIcon
+                      className="delete-btn"
+                      onClick={() => handleDelete(report.id)}
+                    />
+                    <UpdateIcon
+                      className="update-btn"
+                      onClick={() => handleUpdateIcon(report)}
+                    />
                   </td>
                 </tr>
               ))}

@@ -4,7 +4,6 @@ export const getReports = async () => {
   const { data } = await axios.get(
     import.meta.env.VITE_APP_BASE_URL + "/api/v1/reports"
   );
-  console.log(data);
   return data;
 };
 
