@@ -258,9 +258,7 @@ function Report() {
                 <th>Diagnosis</th>
                 <th>Doctor Name</th>
                 <th>Customer</th>
-                <th>Vaccine List</th>
                 <th>Price</th>
-                <th>Appointment Date</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -272,13 +270,7 @@ function Report() {
                   <td>{report.diagnosis}</td>
                   <td>{report.appointment.doctorName}</td>
                   <td>{report.appointment.customerName}</td>
-                  <td>
-                    {report.vaccineList?.map((vaccineLists) => (
-                      <span key={vaccineLists.id}>{vaccineLists.name}, </span>
-                    ))}
-                  </td>
                   <td>{report.price}</td>
-                  <td>{report.appointment.appointmentDate}</td>
                   <td className="actions">
                     <DeleteIcon
                       className="delete-btn"

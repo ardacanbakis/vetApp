@@ -372,7 +372,7 @@ function Vaccine() {
           <button onClick={handleSearchByDates}>Search</button>
           <button className="reset-btn" onClick={handleReset}>Reset  </button>
         </div>
-      
+
 
       <div className="list">
         <h2>Vaccine List</h2>
@@ -385,7 +385,6 @@ function Vaccine() {
                 <th>Protection Start Date</th>
                 <th>Protection Finish Date</th>
                 <th>Animal Name</th>
-                <th>Report Title</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -397,7 +396,6 @@ function Vaccine() {
                   <td>{vaccine.protectionStartDate}</td>
                   <td>{vaccine.protectionFinishDate}</td>
                   <td>{vaccine.animal.name}</td>
-                  <td>{vaccine.report?.title}</td>
 
                   <td>
                     <span onClick={() => handleUpdateIcon(vaccine)}>
